@@ -264,6 +264,10 @@ categories.forEach((category) => {
             
             let value = infoObj.value
             
+            log(`${infoObj.name} ${value}`)
+            
+             
+            
             if ((value === '') || (value === '0') || (value === '-')) {
               
               span.innerText = ''
