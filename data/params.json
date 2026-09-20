@@ -1,0 +1,429 @@
+[
+  {
+    "name": "Калорийность",
+    "importance": "60%",
+    "unit": "ккал",
+    "norma": "2500", 
+    "accum": ""
+  },
+  {
+    "name": "Углеводы",
+    "importance": "40%",
+    "unit": "г",
+    "norma": "400",
+    "accum": "да"
+  },
+  {
+    "name": "Белки",
+    "importance": "90%",
+    "unit": "г",
+    "norma": "115",
+    "accum": ""
+  },
+  {
+    "name": "Жиры",
+    "importance": "55%",
+    "unit": "г",
+    "norma": "85",
+    "accum": "да"
+  },
+  {
+    "name": "Насыщенные жиры",
+    "importance": "50%",
+    "unit": "г",
+    "norma": "25",
+    "accum": ""
+  },
+  {
+    "name": "Клетчатка",
+    "importance": "95%",
+    "unit": "г",
+    "norma": "35",
+    "accum": ""
+  },
+  {
+    "name": "Гликемический индекс",
+    "importance": "45%",
+    "unit": "ед.",
+    "norma": "100",
+    "accum": ""
+  },
+  {
+    "name": "Омега-3 ALA",
+    "importance": "70%",
+    "unit": "мг",
+    "norma": "1500",
+    "accum": "да"
+  },
+  {
+    "name": "Омега-3 EPA",
+    "importance": "85%",
+    "unit": "мг",
+    "norma": "300",
+    "accum": "да"
+  },
+  {
+    "name": "Омега-3 DHA",
+    "importance": "85%",
+    "unit": "мг",
+    "norma": "200",
+    "accum": "да"
+  },
+  {
+    "name": "Омега-6",
+    "importance": "25%",
+    "unit": "г",
+    "norma": "14",
+    "accum": "да"
+  },
+  {
+    "name": "Витамин A",
+    "importance": "55%",
+    "unit": "мкг",
+    "norma": "900",
+    "accum": "да"
+  },
+  {
+    "name": "B1 (тиамин)",
+    "importance": "45%",
+    "unit": "мг",
+    "norma": "1.5",
+    "accum": ""
+  },
+  {
+    "name": "B2 (рибофлавин)",
+    "importance": "40%",
+    "unit": "мг",
+    "norma": "1.3",
+    "accum": ""
+  },
+  {
+    "name": "B3 (ниацин)",
+    "importance": "45%",
+    "unit": "мг",
+    "norma": "20",
+    "accum": ""
+  },
+  {
+    "name": "B4 (холин)",
+    "importance": "50%",
+    "unit": "мг",
+    "norma": "550",
+    "accum": ""
+  },
+  {
+    "name": "B5 (пантотен. к-та)",
+    "importance": "30%",
+    "unit": "мг",
+    "norma": "5",
+    "accum": ""
+  },
+  {
+    "name": "B6",
+    "importance": "55%",
+    "unit": "мг",
+    "norma": "2",
+    "accum": ""
+  },
+  {
+    "name": "B7 (биотин)",
+    "importance": "25%",
+    "unit": "мкг",
+    "norma": "50",
+    "accum": ""
+  },
+  {
+    "name": "B9 (фолат)",
+    "importance": "70%",
+    "unit": "мкг",
+    "norma": "400",
+    "accum": ""
+  },
+  {
+    "name": "B12",
+    "importance": "90%",
+    "unit": "мкг",
+    "norma": "3",
+    "accum": "да"
+  },
+  {
+    "name": "Витамин C",
+    "importance": "55%",
+    "unit": "мг",
+    "norma": "90",
+    "accum": ""
+  },
+  {
+    "name": "Витамин D",
+    "importance": "95%",
+    "unit": "МЕ",
+    "norma": "800",
+    "accum": ""
+  },
+  {
+    "name": "Витамин E",
+    "importance": "40%",
+    "unit": "мг",
+    "norma": "15",
+    "accum": "да"
+  },
+  {
+    "name": "Витамин K",
+    "importance": "60%",
+    "unit": "мкг",
+    "norma": "120",
+    "accum": "да"
+  },
+  {
+    "name": "Кальций (Ca)",
+    "importance": "85%",
+    "unit": "мг",
+    "norma": "1000",
+    "accum": "да"
+  },
+  {
+    "name": "Магний (Mg)",
+    "importance": "80%",
+    "unit": "мг",
+    "norma": "420",
+    "accum": "да"
+  },
+  {
+    "name": "Калий (K)",
+    "importance": "80%",
+    "unit": "мг",
+    "norma": "3500",
+    "accum": ""
+  },
+  {
+    "name": "Натрий (Na)",
+    "importance": "30%",
+    "unit": "мг",
+    "norma": "2200",
+    "accum": ""
+  },
+  {
+    "name": "Хлор (Cl)",
+    "importance": "10%",
+    "unit": "мг",
+    "norma": "2300",
+    "accum": ""
+  },
+  {
+    "name": "Фосфор (P)",
+    "importance": "20%",
+    "unit": "мг",
+    "norma": "700",
+    "accum": "да"
+  },
+  {
+    "name": "Железо (Fe)",
+    "importance": "75%",
+    "unit": "мг",
+    "norma": "8",
+    "accum": "да"
+  },
+  {
+    "name": "Цинк (Zn)",
+    "importance": "70%",
+    "unit": "мг",
+    "norma": "11",
+    "accum": ""
+  },
+  {
+    "name": "Йод (I)",
+    "importance": "75%",
+    "unit": "мкг",
+    "norma": "150",
+    "accum": "да"
+  },
+  {
+    "name": "Селен (Se)",
+    "importance": "65%",
+    "unit": "мкг",
+    "norma": "55",
+    "accum": ""
+  },
+  {
+    "name": "Медь (Cu)",
+    "importance": "30%",
+    "unit": "мг",
+    "norma": "0.9",
+    "accum": "да"
+  },
+  {
+    "name": "Марганец (Mn)",
+    "importance": "20%",
+    "unit": "мг",
+    "norma": "2.3",
+    "accum": ""
+  },
+  {
+    "name": "Молибден (Mo)",
+    "importance": "10%",
+    "unit": "мкг",
+    "norma": "45",
+    "accum": ""
+  },
+  {
+    "name": "Валин",
+    "importance": "30%",
+    "unit": "мг",
+    "norma": "1740",
+    "accum": ""
+  },
+  {
+    "name": "Изолейцин",
+    "importance": "30%",
+    "unit": "мг",
+    "norma": "1340",
+    "accum": ""
+  },
+  {
+    "name": "Лейцин",
+    "importance": "45%",
+    "unit": "мг",
+    "norma": "2610",
+    "accum": ""
+  },
+  {
+    "name": "Лизин",
+    "importance": "40%",
+    "unit": "мг",
+    "norma": "2010",
+    "accum": ""
+  },
+  {
+    "name": "Метионин",
+    "importance": "25%",
+    "unit": "мг",
+    "norma": "1000",
+    "accum": ""
+  },
+  {
+    "name": "Треонин",
+    "importance": "25%",
+    "unit": "мг",
+    "norma": "1000",
+    "accum": ""
+  },
+  {
+    "name": "Триптофан",
+    "importance": "35%",
+    "unit": "мг",
+    "norma": "268",
+    "accum": ""
+  },
+  {
+    "name": "Фенилаланин",
+    "importance": "20%",
+    "unit": "мг",
+    "norma": "1675",
+    "accum": ""
+  },
+  {
+    "name": "Гистидин",
+    "importance": "20%",
+    "unit": "мг",
+    "norma": "670",
+    "accum": ""
+  },
+  {
+    "name": "Сахар",
+    "importance": "",
+    "unit": "г",
+    "norma": "50",
+    "accum": ""
+  },
+  {
+    "name": "Холестерин",
+    "importance": "",
+    "unit": "мг",
+    "norma": "300",
+    "accum": ""
+  },
+  {
+    "name": "Уровень вздутия",
+    "importance": "",
+    "unit": "",
+    "norma": "",
+    "accum": ""
+  },
+  {
+    "name": "Токсичн запах вздутия",
+    "importance": "",
+    "unit": "",
+    "norma": "",
+    "accum": ""
+  },
+  {
+    "name": "Вероятн поноса",
+    "importance": "",
+    "unit": "",
+    "norma": "",
+    "accum": ""
+  },
+  {
+    "name": "Инсулин качели",
+    "importance": "",
+    "unit": "",
+    "norma": "",
+    "accum": ""
+  },
+  {
+    "name": "Вредность",
+    "importance": "",
+    "unit": "",
+    "norma": "",
+    "accum": ""
+  },
+  {
+    "name": "Полезность",
+    "importance": "",
+    "unit": "",
+    "norma": "",
+    "accum": ""
+  },
+  {
+    "name": "Тяжесть ЖКТ (на 100г)",
+    "importance": "",
+    "unit": "",
+    "norma": "",
+    "accum": ""
+  },
+  {
+    "name": "Сонность после приема",
+    "importance": "",
+    "unit": "",
+    "norma": "",
+    "accum": ""
+  },
+  {
+    "name": "Риск при ежедневном употреблении (5+ лет)",
+    "importance": "",
+    "unit": "",
+    "norma": "",
+    "accum": ""
+  },
+  {
+    "name": "Нутриентная плотность (на 100 ккал)",
+    "importance": "",
+    "unit": "",
+    "norma": "",
+    "accum": ""
+  },
+    {
+    "name": "Изжога",
+    "importance": "",
+    "unit": "",
+    "norma": "",
+    "accum": ""
+  },
+  {
+    "name": "Стоимость",
+    "importance": "",
+    "unit": "кроны",
+    "norma": "",
+    "accum": ""
+  }
+]
