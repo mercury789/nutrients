@@ -373,17 +373,6 @@ categories.forEach((category) => {
       if (targ.closest('[data-title-l]')) {
   const target = targ.closest('[data-title-l]')
   
-  dqa('[data-title-l]').forEach((e) => {
-    
-    if (e !== target) {
-      
-      e.classList.remove('_active')
-      
-    }
-    
-  })
-  
-  
   
   if (target.classList.contains('_active')) {
     target.classList.remove('_active')
