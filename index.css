@@ -346,3 +346,12 @@ border-left: 0.1px solid gray;
 
 }
 
+
+[data-const-names] {
+  height: 27px;
+}
+[data-constr-weight] th {
+  top: 38px;
+}
+
+
