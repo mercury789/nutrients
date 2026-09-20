@@ -760,6 +760,77 @@ emptyDecor.setAttribute('data-c_fix', '')
       target.innerText = reNum
       
       
+      if (get('constrGram')) {
+        
+        let obj = {
+        name: targetProduct,
+        value: reNum
+      }
+      
+      let old = JSON.parse(get('constrGram'))
+      
+      log(`olddddddd ${old}`)
+      
+      let error = 0
+      
+      old.forEach((e) => {
+        
+        log(`###### if ( ${e.name} === ${targetProduct}`)
+        
+        if (e.name === targetProduct) {
+          error = error + 1
+          
+          log(`QqqQwwwwwwwq ${reNum}`)
+          e.value = reNum
+          log(e.value)
+          log(`e.value ${e.value} = reNum ${reNum}`)
+          
+        }
+        
+      })
+      
+      log(`##########ERROR: ${error}`)
+      
+      
+      if (error === 0) {
+        
+        log(`///olddddd ${old}`)
+        log(old)
+        log(`///objjjjjj ${obj}`)
+        log(obj)
+        
+        old.push(obj)
+        
+        log(`newwwwwwObjjj ${old}`)
+        log(old)
+
+      set('constrGram', JSON.stringify(old))
+        
+      } else {
+        
+        // этот обьект есть его нужно перезаписать !!! внизу все не верное
+        
+        
+
+set('constrGram', JSON.stringify(old))
+        
+      }
+      
+      
+      } else {
+        
+        let obj = [{
+        name: targetProduct,
+        value: reNum
+      }]
+      
+      set('constrGram', JSON.stringify(obj))
+      
+      log(obj)
+      log(777777777)
+        
+        
+      }
       
       
       
@@ -828,16 +899,27 @@ const dcWeight = dq('[data-constr-weight]')
               
             } else {
               
-              log(`
-                  ${targetProduct} === ${obj.product}
-              `)
-              
-            if (targetProduct === obj.product) {
-              
-  let coof = reNum / 100
-  value = value * coof
-  log('yesss')
-            }
+
+        if (get('constrGram')) {
+  
+  let constGram = JSON.parse(get('constrGram'))
+  
+  constGram.forEach((e) => {
+    
+    if (e.name === obj.product) {
+      
+      let coof
+      
+      coof = e.value / 100
+      
+      value = value * coof
+      
+    }
+    
+  })
+  
+}
+
               
               value = +(+value).toFixed(1)
               
@@ -918,82 +1000,11 @@ const dcWeight = dq('[data-constr-weight]')
       
       dq('[data-sum-weight]').innerText = newSum
       
-      set('constrProducts', JSON.stringify(constrProducts))
+      
       set('innerHTML', dq('[data-load]').innerHTML)
       
       
       
-      if (get('constrGram')) {
-        
-        let obj = {
-        name: targetProduct,
-        value: reNum
-      }
-      
-      let old = JSON.parse(get('constrGram'))
-      
-      log(`olddddddd ${old}`)
-      
-      let error = 0
-      
-      old.forEach((e) => {
-        
-        log(`###### if ( ${e.name} === ${targetProduct}`)
-        
-        if (e.name === targetProduct) {
-          error = error + 1
-          
-          log(`QqqQwwwwwwwq ${reNum}`)
-          e.value = reNum
-          log(e.value)
-          log(`e.value ${e.value} = reNum ${reNum}`)
-          
-        }
-        
-      })
-      
-      log(`##########ERROR: ${error}`)
-      
-      
-      if (error === 0) {
-        
-        log(`///olddddd ${old}`)
-        log(old)
-        log(`///objjjjjj ${obj}`)
-        log(obj)
-        
-        old.push(obj)
-        
-        log(`newwwwwwObjjj ${old}`)
-        log(old)
-
-      set('constrGram', JSON.stringify(old))
-        
-      } else {
-        
-        // этот обьект есть его нужно перезаписать !!! внизу все не верное
-        
-        
-
-set('constrGram', JSON.stringify(old))
-        
-      }
-      
-      
-      } else {
-        
-        let obj = [{
-        name: targetProduct,
-        value: reNum
-      }]
-      
-      set('constrGram', JSON.stringify(obj))
-      
-      log(obj)
-      log(777777777)
-        
-        
-      }
       
       
   
