@@ -16,9 +16,7 @@ function clear() {
 function log(data) {
   console.log(data)
 }
-function dq(data) {
-  return document.querySelector(data)
-}
+
 function create(data) {
   return document.createElement(data)
 }
@@ -44,6 +42,9 @@ function max100(data) {
     return data
   }
   
+}
+function dq(data) {
+  return document.querySelector(data)
 }
 function dqa(data) {
   return document.querySelectorAll(data)
@@ -264,7 +265,7 @@ categories.forEach((category) => {
             
             let value = infoObj.value
             
-            log(`${infoObj.name} ${value}`)
+            
             
              
             
@@ -355,14 +356,14 @@ categories.forEach((category) => {
           
           constrProducts = constrProducts.filter(item => item !== target.innerText);
           
-          console.log(constrProducts)
+          
           
         } else {
           target.classList.add('_active')
           
           constrProducts.push(target.innerText)
           
-          log(constrProducts)
+          
         }
         
         set('constrProducts', JSON.stringify(constrProducts))
@@ -372,6 +373,9 @@ categories.forEach((category) => {
       
       if (targ.closest('[data-title-l]')) {
   const target = targ.closest('[data-title-l]')
+  
+  
+  
   
   
   if (target.classList.contains('_active')) {
@@ -430,10 +434,10 @@ table.classList.remove('_active')
   
 } else {
   
-  log(2)
+  
   
   if (constrProducts.length) {
-  log(3)
+  
   target.classList.add('_active')
   table.classList.add('_active')
   
@@ -503,7 +507,7 @@ params.forEach((e) => {
           let value = infoObj.value
           
           
-          log(`MAIIIIIIIN value: ${value}`)
+          
           
           if ((value === '') || (value === '0') || (value === '-')) {
             
@@ -522,17 +526,17 @@ params.forEach((e) => {
               
             } else {
               
-              log(`huiii0 ${value}`)
+              
               
               if (get('constrGram')) {
                 
                 
                 
-                log(`hui1 ${value}`)
+                
                 
                 let constGram = JSON.parse(get('constrGram'))
                 
-                log(`hui2 ${value}`)
+                
                 
                 constGram.forEach((e) => {
                   
@@ -540,19 +544,19 @@ params.forEach((e) => {
                     
                     let coof
                     
-                    log(`${e.name} === ${obj.product}`)
                     
-                    log(`hui3 ${value}`)
                     
-                    log(`let coof = ${value} / 100`)
+                    
+                    
+                    
 
                     
                     coof = e.value / 100
                     
-                    log(`${value * coof} = ${value} * ${coof}`)
+                    
                     
                 value = value * coof
-                log(`huiiiiii4 ${value}`)
+                
                 
                   } 
                   
@@ -563,13 +567,13 @@ params.forEach((e) => {
               
               
                 
-                log(`huiii5 ${value}`)
+                
               
               value = +(+value).toFixed(1)
               
               sum = sum + value
               
-              log(`summmm = sum+ value ${sum}`)
+              
               
               if (infoObj.name === 'Стоимость') {
                 
@@ -602,8 +606,30 @@ params.forEach((e) => {
     })
   })
   
+  
+  
+  let stortage = ''
+  
+  if (sumProcent > 100) {
+    stortage = 'class="_active"'
+    
+    dqa('[data-value] [data-title-l]').forEach((e) =>{
+      
+      
+      
+      log(e)
+      
+      
+      if (e.innerText === nameParam) {
+        e.classList.add('_active')
+      }
+      
+    })
+    
+  }
+  
   tr.insertAdjacentHTML('afterbegin', `
-          <td data-c_fix-l data-title-l>${e.name}</td>
+          <td data-c_fix-l data-title-l ${stortage}>${e.name}</td>
           <td class='progress' style='--progress: ${importance}%; ${colorProcent(importance)}'>
           
           <span>${importance}%</span>
@@ -615,7 +641,8 @@ params.forEach((e) => {
     `)
     
   sum = +sum.toFixed(1)
-  sumProcent = +sumProcent.toFixed(0)
+sumProcent = +sumProcent.toFixed(0)
+  
   
   const spanFR = create('span')
   
@@ -671,7 +698,7 @@ params.forEach((e) => {
           }
     })
     
-    log(x)
+    
   
   if (x) {
     
@@ -758,40 +785,35 @@ emptyDecor.setAttribute('data-c_fix', '')
       
       let old = JSON.parse(get('constrGram'))
       
-      log(`olddddddd ${old}`)
+      
       
       let error = 0
       
       old.forEach((e) => {
         
-        log(`###### if ( ${e.name} === ${targetProduct}`)
+        
         
         if (e.name === targetProduct) {
           error = error + 1
           
-          log(`QqqQwwwwwwwq ${reNum}`)
+          
           e.value = reNum
-          log(e.value)
-          log(`e.value ${e.value} = reNum ${reNum}`)
+          
           
         }
         
       })
       
-      log(`##########ERROR: ${error}`)
+      
       
       
       if (error === 0) {
         
-        log(`///olddddd ${old}`)
-        log(old)
-        log(`///objjjjjj ${obj}`)
-        log(obj)
+        
         
         old.push(obj)
         
-        log(`newwwwwwObjjj ${old}`)
-        log(old)
+        
 
       set('constrGram', JSON.stringify(old))
         
@@ -815,15 +837,14 @@ set('constrGram', JSON.stringify(old))
       
       set('constrGram', JSON.stringify(obj))
       
-      log(obj)
-      log(777777777)
+    
         
         
       }
       
       
       
-      log(`========> ${targetProduct}`)
+      
       
       dq('[data-constr-value]').innerHTML = ''
       
@@ -949,8 +970,31 @@ const dcWeight = dq('[data-constr-weight]')
     })
   })
   
+  
+  let stortage = ''
+  
+  if (sumProcent > 100) {
+    stortage = 'class="_active"'
+    
+    dqa('[data-value] [data-title-l]').forEach((e) =>{
+      
+      
+      
+      log(e)
+      
+      
+      if (e.innerText === nameParam) {
+        e.classList.add('_active')
+      }
+      
+    })
+    
+  }
+  
+  
+  
   tr.insertAdjacentHTML('afterbegin', `
-          <td data-fix-l data-title-l>${e.name}</td>
+          <td data-fix-l data-title-l ${stortage}>${e.name}</td>
           <td class='progress' style='--progress: ${importance}%; ${colorProcent(importance)}'>
           
           <span>${importance}%</span>
