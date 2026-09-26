@@ -211,6 +211,8 @@ const dNames = dq('[data-names]')
 ]
   
   
+  let productLimit = []
+  
       
   categories.forEach((category) => {
   // отрисовка категорий
@@ -286,14 +288,82 @@ categories.forEach((category) => {
                 
               } else {
                 
+                
                 value = +value
                 
-                if (infoObj.name === 'Стоимость') {
+                if (
+                  infoObj.name === 'Стоимость' || 
+                infoObj.name === 'Лимит на порцию'
+                  || 
+                infoObj.name === 'Лимит за сутки'
                   
-                  span.innerText = value
+                ) {
+                  
+                  if (infoObj.name === 'Лимит за сутки') {
+                    
+                    let newObj = {
+                      name: obj.product,
+                      value: value
+                    }
+                    
+                    productLimit.push(newObj)
+                    
+                    span.innerText = value
+                    
+                  }
+                  
+                  if (infoObj.name === 'Стоимость') {
+                    
+                    
+                    productLimit.forEach((e) => {
+  
+  if (e.name === obj.product) {
+    
+    let coof
+    
+    coof = e.value / 100
+    
+    
+    value = value * coof
+    
+    
+  }
+  
+})
+
+span.innerText = value.toFixed(1)
+
+                  }
+                  
+                  if (infoObj.name === 'Лимит на порцию') {
+                    
+                    span.innerText = value
+                    
+                  }
+                  
                   
                 } else {
-                  const procent = +((+infoObj.value / +e.norma * 100).toFixed(0))
+                  
+                  
+                  productLimit.forEach((e) => {
+  
+  if (e.name === obj.product) {
+    
+    let coof
+    
+    coof = e.value / 100
+    
+    
+    value = value * coof
+    
+    
+  }
+  
+})
+                  
+                  
+                  
+                  const procent = +((+value / +e.norma * 100).toFixed(0))
 
                 span.innerText = `${(value).toFixed(1)} ${procent}%`
                 
@@ -531,11 +601,7 @@ params.forEach((e) => {
               if (get('constrGram')) {
                 
                 
-                
-                
-                
                 let constGram = JSON.parse(get('constrGram'))
-                
                 
                 
                 constGram.forEach((e) => {
@@ -544,15 +610,7 @@ params.forEach((e) => {
                     
                     let coof
                     
-                    
-                    
-                    
-                    
-                    
-
-                    
                     coof = e.value / 100
-                    
                     
                     
                 value = value * coof
@@ -565,21 +623,86 @@ params.forEach((e) => {
               }
               
               
-              
-                
-                
-              
               value = +(+value).toFixed(1)
               
               sum = sum + value
               
               
               
-              if (infoObj.name === 'Стоимость') {
+              if (
+                  infoObj.name === 'Стоимость' || 
+                infoObj.name === 'Лимит на порцию'
+                  || 
+                infoObj.name === 'Лимит за сутки'
+                  
+                ) {
+                  
+                  if (infoObj.name === 'Лимит за сутки') {
+                    /*
+                    let newObj = {
+                      name: obj.product,
+                      value: value
+                    }
+                    
+                    productLimit.push(newObj)
+                    */
+                    span.innerText = value
+                    
+                  }
+                  
+                  if (infoObj.name === 'Стоимость') {
+                    
+                    
+                    productLimit.forEach((e) => {
+  
+  if (e.name === obj.product) {
+    
+    let coof
+    
+    coof = e.value / 100
+    
+    
+    value = value * coof
+    
+    
+  }
+  
+})
+
+span.innerText = value.toFixed(1)
+
+                  }
+                  
+                  if (infoObj.name === 'Лимит на порцию') {
+                    
+                    span.innerText = value
+                    
+                  }
+                  
+                  
+                } else {
+                  
+                  
+                  productLimit.forEach((e) => {
+  
+  if (e.name === obj.product) {
+    
+    let coof
+    
+    coof = e.value / 100
+    
+    
+    value = value * coof
+    
+    
+  }
+  
+})
+                  
+                  
                 
-                span.innerText = value
                 
-              } else {
+                
                 const procent = +((+value / +e.norma * 100).toFixed(0))
                 
                 sumProcent = sumProcent + procent
@@ -686,6 +809,18 @@ sumProcent = +sumProcent.toFixed(0)
                 
               
               
+            } else {
+              
+              productLimit.forEach((e) => {
+                
+                if (e.name === obj.product) {
+                  
+                  g = e.value
+                  
+                }
+                
+              })
+              
             }
             
           thWeight.innerText = g
@@ -770,8 +905,6 @@ emptyDecor.setAttribute('data-c_fix', '')
         
       reNum = Number(reNum);
         
-        
-      
 
       target.innerText = reNum
       
@@ -879,9 +1012,6 @@ const dcWeight = dq('[data-constr-weight]')
       if (constrProducts.includes(obj.product)) {
         
         
-        
-        
-        
       obj.info.forEach((infoObj) => {
         if (infoObj.name === nameParam) {
           
@@ -909,10 +1039,14 @@ const dcWeight = dq('[data-constr-weight]')
               
             } else {
               
+            let defaultValue = value
+              
 
         if (get('constrGram')) {
   
   let constGram = JSON.parse(get('constrGram'))
+  
+  let defaultMode = true
   
   constGram.forEach((e) => {
     
@@ -924,9 +1058,51 @@ const dcWeight = dq('[data-constr-weight]')
       
       value = value * coof
       
+      defaultMode = false
+      
     }
     
   })
+  
+  if (defaultMode) {
+    
+    productLimit.forEach((e) => {
+  
+  if (e.name === obj.product) {
+    
+    let coof
+    
+    coof = e.value / 100
+    
+    
+    value = value * coof
+    
+    
+  }
+  
+})
+    
+  }
+  
+} else {
+  
+  
+  productLimit.forEach((e) => {
+  
+  if (e.name === obj.product) {
+    
+    let coof
+    
+    coof = e.value / 100
+    
+    
+    value = value * coof
+    
+    
+  }
+  
+})
+
   
 }
 
@@ -937,13 +1113,38 @@ const dcWeight = dq('[data-constr-weight]')
               
               sum = sum + value
               
-              if (infoObj.name === 'Стоимость') {
+              if (
+                  infoObj.name === 'Стоимость' || 
+                infoObj.name === 'Лимит на порцию'
+                  || 
+                infoObj.name === 'Лимит за сутки'
+                  
+                ) {
+                  
+                  if (infoObj.name === 'Лимит за сутки') {
+
+                    span.innerText = defaultValue
+                    
+                  }
+                  
+                  if (infoObj.name === 'Стоимость') {
+                    
+
+            span.innerText = value
+
+                  }
+                  
+                  if (infoObj.name === 'Лимит на порцию') {
+                    
+                    span.innerText = defaultValue
+                    
+                  }
+                  
+                  
+                } else {
+                  
                 
-                span.innerText = value
-                
-              } else {
                 const procent = +((+value / +e.norma * 100).toFixed(0))
-                
                 
                 
                 sumProcent = sumProcent + procent
@@ -1055,6 +1256,8 @@ const dcWeight = dq('[data-constr-weight]')
       }
 
     })
+
+log(productLimit)
 
 })
 
