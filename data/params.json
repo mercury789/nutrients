@@ -7,19 +7,20 @@
     "accum": ""
   },
   {
-  "name": "Лимит на порцию",
-  "importance": "",
-  "unit": "г",
-  "norma": "",
-  "accum": ""
-},
-  {
   "name": "Стоимость",
   "importance": "",
   "unit": "кроны",
   "norma": "",
   "accum": ""
 },
+  {
+  "name": "Лимит на порцию",
+  "importance": "",
+  "unit": "г",
+  "norma": "",
+  "accum": ""
+},
+  
   
   {
   "name": "Калорийность",
@@ -367,77 +368,77 @@
   {
     "name": "Уровень вздутия",
     "importance": "",
-    "unit": "",
+    "unit": "%",
     "norma": "",
     "accum": ""
   },
   {
     "name": "Токсичн запах вздутия",
     "importance": "",
-    "unit": "",
+    "unit": "%",
     "norma": "",
     "accum": ""
   },
   {
     "name": "Вероятн поноса",
     "importance": "",
-    "unit": "",
+    "unit": "%",
     "norma": "",
     "accum": ""
   },
   {
     "name": "Инсулин качели",
     "importance": "",
-    "unit": "",
+    "unit": "%",
     "norma": "",
     "accum": ""
   },
   {
     "name": "Вредность",
     "importance": "",
-    "unit": "",
+    "unit": "%",
     "norma": "",
     "accum": ""
   },
   {
     "name": "Полезность",
     "importance": "",
-    "unit": "",
+    "unit": "%",
     "norma": "",
     "accum": ""
   },
   {
     "name": "Тяжесть ЖКТ (на 100г)",
     "importance": "",
-    "unit": "",
+    "unit": "%",
     "norma": "",
     "accum": ""
   },
   {
     "name": "Сонность после приема",
     "importance": "",
-    "unit": "",
+    "unit": "%",
     "norma": "",
     "accum": ""
   },
   {
     "name": "Риск при ежедневном употреблении (5+ лет)",
     "importance": "",
-    "unit": "",
+    "unit": "%",
     "norma": "",
     "accum": ""
   },
   {
     "name": "Нутриентная плотность (на 100 ккал)",
     "importance": "",
-    "unit": "",
+    "unit": "%",
     "norma": "",
     "accum": ""
   },
     {
     "name": "Изжога",
     "importance": "",
-    "unit": "",
+    "unit": "%",
     "norma": "",
     "accum": ""
   }
