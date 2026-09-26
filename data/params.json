@@ -1,11 +1,33 @@
 [
-  {
-    "name": "Калорийность",
-    "importance": "60%",
-    "unit": "ккал",
-    "norma": "2500", 
+    {
+    "name": "Лимит за сутки",
+    "importance": "",
+    "unit": "г",
+    "norma": "",
     "accum": ""
   },
+  {
+  "name": "Лимит на порцию",
+  "importance": "",
+  "unit": "г",
+  "norma": "",
+  "accum": ""
+},
+  {
+  "name": "Стоимость",
+  "importance": "",
+  "unit": "кроны",
+  "norma": "",
+  "accum": ""
+},
+  
+  {
+  "name": "Калорийность",
+  "importance": "60%",
+  "unit": "ккал",
+  "norma": "2500",
+  "accum": ""
+},
   {
     "name": "Углеводы",
     "importance": "40%",
@@ -416,13 +438,6 @@
     "name": "Изжога",
     "importance": "",
     "unit": "",
-    "norma": "",
-    "accum": ""
-  },
-  {
-    "name": "Стоимость",
-    "importance": "",
-    "unit": "кроны",
     "norma": "",
     "accum": ""
   }
