@@ -58,7 +58,6 @@ let berries = null;
 let breads = null;
 let dairy = null;
 let fish = null;
-let fastfood = null;
 let fruits = null;
 let grains = null;
 let lagumes = null;
@@ -79,7 +78,6 @@ async function init() {
     breadsRes,
     dairyRes,
     fishRes,
-    fastfoodRes,
     fruitsRes,
     grainsRes,
     lagumesRes,
@@ -98,7 +96,6 @@ async function init() {
     fetch('./data/breads.json'),
     fetch('./data/dairy.json'),
     fetch('./data/fish.json'),
-    fetch('./data/fastfood.json'),
     fetch('./data/fruits.json'),
     fetch('./data/grains.json'),
     fetch('./data/lagumes.json'),
@@ -118,7 +115,6 @@ async function init() {
   breads = await breadsRes.json();
   dairy = await dairyRes.json();
   fish = await fishRes.json();
-  fastfood = await fastfoodRes.json();
   fruits = await fruitsRes.json();
   grains = await grainsRes.json();
   lagumes = await lagumesRes.json();
@@ -156,10 +152,6 @@ const dNames = dq('[data-names]')
     name: 'рыба',
     obj: fish
   },
-  {
-  name: 'фастфуд',
-  obj: fastfood
-},
   {
     name: 'молочные продукты',
     obj: dairy
@@ -267,7 +259,11 @@ categories.forEach((category) => {
             
             let value = infoObj.value
             
-            
+            if (nameParam === 'Стоимость') {
+              
+              td.classList.add('_price')
+              
+            }
             
              
             
@@ -576,7 +572,11 @@ params.forEach((e) => {
           
           let value = infoObj.value
           
-          
+          if (nameParam === 'Стоимость') {
+  
+  td.classList.add('_price')
+  
+}
           
           
           if ((value === '') || (value === '0') || (value === '-')) {
@@ -598,30 +598,77 @@ params.forEach((e) => {
               
               
               
-              if (get('constrGram')) {
-                
-                
-                let constGram = JSON.parse(get('constrGram'))
-                
-                
-                constGram.forEach((e) => {
-                  
-                  if (e.name === obj.product) {
-                    
-                    let coof
-                    
-                    coof = e.value / 100
-                    
-                    
-                value = value * coof
-                
-                
-                  } 
-                  
-                })
-                
-              }
               
+              
+              
+              let defaultValue = value
+              
+
+        if (get('constrGram')) {
+  
+  let constrGram = JSON.parse(get('constrGram'))
+  
+  let defaultMode = true
+  
+  constrGram.forEach((e) => {
+    
+    if (e.name === obj.product) {
+      
+      let coof
+      
+      coof = e.value / 100
+      
+      value = value * coof
+      
+      defaultMode = false
+      
+    }
+    
+  })
+  
+  if (defaultMode) {
+    
+    productLimit.forEach((e) => {
+  
+  if (e.name === obj.product) {
+    
+    let coof
+    
+    coof = e.value / 100
+    
+    
+    value = value * coof
+    
+    
+  }
+  
+})
+    
+  }
+  
+} else {
+  
+  
+  productLimit.forEach((e) => {
+  
+  if (e.name === obj.product) {
+    
+    let coof
+    
+    coof = e.value / 100
+    
+    
+    value = value * coof
+    
+    
+  }
+  
+})
+
+  
+}
+
+            
               
               value = +(+value).toFixed(1)
               
@@ -638,44 +685,22 @@ params.forEach((e) => {
                 ) {
                   
                   if (infoObj.name === 'Лимит за сутки') {
-                    /*
-                    let newObj = {
-                      name: obj.product,
-                      value: value
-                    }
-                    
-                    productLimit.push(newObj)
-                    */
-                    span.innerText = value
+
+                    span.innerText = defaultValue
                     
                   }
                   
                   if (infoObj.name === 'Стоимость') {
                     
                     
-                    productLimit.forEach((e) => {
-  
-  if (e.name === obj.product) {
-    
-    let coof
-    
-    coof = e.value / 100
-    
-    
-    value = value * coof
-    
-    
-  }
-  
-})
 
-span.innerText = value.toFixed(1)
+          span.innerText = value.toFixed(1)
 
                   }
                   
                   if (infoObj.name === 'Лимит на порцию') {
                     
-                    span.innerText = value
+                    span.innerText = defaultValue
                     
                   }
                   
@@ -683,24 +708,7 @@ span.innerText = value.toFixed(1)
                 } else {
                   
                   
-                  productLimit.forEach((e) => {
-  
-  if (e.name === obj.product) {
-    
-    let coof
-    
-    coof = e.value / 100
-    
-    
-    value = value * coof
-    
-    
-  }
-  
-})
                   
-                  
-                
                 
                 
                 const procent = +((+value / +e.norma * 100).toFixed(0))
@@ -765,17 +773,41 @@ span.innerText = value.toFixed(1)
     
   sum = +sum.toFixed(1)
 sumProcent = +sumProcent.toFixed(0)
+
+
+
+
+const exception = ['Лимит за сутки','Стоимость','Лимит на порцию','Уровень вздутия','Токсичн запах вздутия','Вероятн поноса','Инсулин качели','Вредность','Полезность','Тяжесть ЖКТ (на 100г)','Сонность после приема','Риск при ежедневном употреблении (5+ лет)','Нутриентная плотность (на 100 ккал)','Изжога']
+
+const spanFR = create('span')
+const fullResult = create('td')
+
+
+
+if (exception.includes(nameParam)) {
   
+  if (sum === 0) {
+  sum = ''
+}
+
   
-  const spanFR = create('span')
+  spanFR.innerText = `${sum}`
   
-  const fullResult = create('td')
-  spanFR.innerText = `${sum} ${sumProcent}%`
-  fullResult.classList.add('progress')
+} else {
+
+spanFR.innerText = `${sum} ${sumProcent}%`
+fullResult.classList.add('progress')
+fullResult.style = `--progress: ${max100(sumProcent)}%; ${colorProcent(sumProcent)}`
   
+}
+
   
+  if (nameParam === 'Стоимость') {
   
-  fullResult.style = `--progress: ${max100(sumProcent)}%; ${colorProcent(sumProcent)}`
+  fullResult.classList.add('_price')
+  
+}
+  
   
   fullResult.appendChild(spanFR)
   tr.appendChild(fullResult)
@@ -1022,6 +1054,13 @@ const dcWeight = dq('[data-constr-weight]')
           
           let value = infoObj.value
           
+          if (nameParam === 'Стоимость') {
+  
+  td.classList.add('_price')
+  
+}
+          
+          
           if ((value === '') || (value === '0') || (value === '-')) {
             
             span.innerText = ''
@@ -1044,11 +1083,11 @@ const dcWeight = dq('[data-constr-weight]')
 
         if (get('constrGram')) {
   
-  let constGram = JSON.parse(get('constrGram'))
+  let constrGram = JSON.parse(get('constrGram'))
   
   let defaultMode = true
   
-  constGram.forEach((e) => {
+  constrGram.forEach((e) => {
     
     if (e.name === obj.product) {
       
@@ -1209,15 +1248,38 @@ const dcWeight = dq('[data-constr-weight]')
   sum = +sum.toFixed(1)
   sumProcent = +sumProcent.toFixed(0)
   
-  const spanFR = create('span')
   
-  const fullResult = create('td')
-  spanFR.innerText = `${sum} ${sumProcent}%`
-  fullResult.classList.add('progress')
+  const exception = ['Лимит за сутки','Стоимость','Лимит на порцию','Уровень вздутия','Токсичн запах вздутия','Вероятн поноса','Инсулин качели','Вредность','Полезность','Тяжесть ЖКТ (на 100г)','Сонность после приема','Риск при ежедневном употреблении (5+ лет)','Нутриентная плотность (на 100 ккал)','Изжога']
+
+const spanFR = create('span')
+const fullResult = create('td')
+
+
+
+if (exception.includes(nameParam)) {
   
+  if (sum === 0) {
+  sum = ''
+}
+
   
+  spanFR.innerText = `${sum}`
   
-  fullResult.style = `--progress: ${max100(sumProcent)}%; ${colorProcent(sumProcent)}`
+} else {
+
+spanFR.innerText = `${sum} ${sumProcent}%`
+fullResult.classList.add('progress')
+fullResult.style = `--progress: ${max100(sumProcent)}%; ${colorProcent(sumProcent)}`
+  
+}
+
+  
+  if (nameParam === 'Стоимость') {
+  
+  fullResult.classList.add('_price')
+  
+}
+  
   
   fullResult.appendChild(spanFR)
   tr.appendChild(fullResult)
