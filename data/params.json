@@ -1,39 +1,42 @@
 [
-    {
+  {
     "name": "Лимит за сутки",
     "importance": "",
     "unit": "г",
     "norma": "",
+    "UL": "",
     "accum": ""
   },
   {
-  "name": "Стоимость",
-  "importance": "",
-  "unit": "кроны",
-  "norma": "",
-  "accum": ""
-},
+    "name": "Стоимость",
+    "importance": "",
+    "unit": "кроны",
+    "norma": "",
+    "UL": "",
+    "accum": ""
+  },
   {
-  "name": "Лимит на порцию",
-  "importance": "",
-  "unit": "г",
-  "norma": "",
-  "accum": ""
-},
-  
-  
+    "name": "Лимит на порцию",
+    "importance": "",
+    "unit": "г",
+    "norma": "",
+    "UL": "",
+    "accum": ""
+  },
   {
-  "name": "Калорийность",
-  "importance": "60%",
-  "unit": "ккал",
-  "norma": "2500",
-  "accum": ""
-},
+    "name": "Калорийность",
+    "importance": "60%",
+    "unit": "ккал",
+    "norma": "2500",
+    "UL": "",
+    "accum": ""
+  },
   {
     "name": "Углеводы",
     "importance": "40%",
     "unit": "г",
     "norma": "400",
+    "UL": "",
     "accum": "да"
   },
   {
@@ -41,6 +44,7 @@
     "importance": "90%",
     "unit": "г",
     "norma": "115",
+    "UL": "",
     "accum": ""
   },
   {
@@ -48,6 +52,7 @@
     "importance": "55%",
     "unit": "г",
     "norma": "85",
+    "UL": "",
     "accum": "да"
   },
   {
@@ -55,6 +60,7 @@
     "importance": "50%",
     "unit": "г",
     "norma": "25",
+    "UL": "",
     "accum": ""
   },
   {
@@ -62,6 +68,7 @@
     "importance": "95%",
     "unit": "г",
     "norma": "35",
+    "UL": "",
     "accum": ""
   },
   {
@@ -69,6 +76,7 @@
     "importance": "45%",
     "unit": "ед.",
     "norma": "100",
+    "UL": "",
     "accum": ""
   },
   {
@@ -76,6 +84,7 @@
     "importance": "70%",
     "unit": "мг",
     "norma": "1500",
+    "UL": "",
     "accum": "да"
   },
   {
@@ -83,6 +92,7 @@
     "importance": "85%",
     "unit": "мг",
     "norma": "300",
+    "UL": "",
     "accum": "да"
   },
   {
@@ -90,6 +100,7 @@
     "importance": "85%",
     "unit": "мг",
     "norma": "200",
+    "UL": "",
     "accum": "да"
   },
   {
@@ -97,6 +108,7 @@
     "importance": "25%",
     "unit": "г",
     "norma": "14",
+    "UL": "",
     "accum": "да"
   },
   {
@@ -104,6 +116,7 @@
     "importance": "55%",
     "unit": "мкг",
     "norma": "900",
+    "UL": "3000",
     "accum": "да"
   },
   {
@@ -111,6 +124,7 @@
     "importance": "45%",
     "unit": "мг",
     "norma": "1.5",
+    "UL": "",
     "accum": ""
   },
   {
@@ -118,6 +132,7 @@
     "importance": "40%",
     "unit": "мг",
     "norma": "1.3",
+    "UL": "",
     "accum": ""
   },
   {
@@ -125,6 +140,7 @@
     "importance": "45%",
     "unit": "мг",
     "norma": "20",
+    "UL": "35",
     "accum": ""
   },
   {
@@ -132,6 +148,7 @@
     "importance": "50%",
     "unit": "мг",
     "norma": "550",
+    "UL": "3500",
     "accum": ""
   },
   {
@@ -139,6 +156,7 @@
     "importance": "30%",
     "unit": "мг",
     "norma": "5",
+    "UL": "",
     "accum": ""
   },
   {
@@ -146,6 +164,7 @@
     "importance": "55%",
     "unit": "мг",
     "norma": "2",
+    "UL": "100",
     "accum": ""
   },
   {
@@ -153,6 +172,7 @@
     "importance": "25%",
     "unit": "мкг",
     "norma": "50",
+    "UL": "",
     "accum": ""
   },
   {
@@ -160,6 +180,7 @@
     "importance": "70%",
     "unit": "мкг",
     "norma": "400",
+    "UL": "1000",
     "accum": ""
   },
   {
@@ -167,6 +188,7 @@
     "importance": "90%",
     "unit": "мкг",
     "norma": "3",
+    "UL": "",
     "accum": "да"
   },
   {
@@ -174,6 +196,7 @@
     "importance": "55%",
     "unit": "мг",
     "norma": "90",
+    "UL": "2000",
     "accum": ""
   },
   {
@@ -181,6 +204,7 @@
     "importance": "95%",
     "unit": "МЕ",
     "norma": "800",
+    "UL": "4000",
     "accum": ""
   },
   {
@@ -188,6 +212,7 @@
     "importance": "40%",
     "unit": "мг",
     "norma": "15",
+    "UL": "1000",
     "accum": "да"
   },
   {
@@ -195,6 +220,7 @@
     "importance": "60%",
     "unit": "мкг",
     "norma": "120",
+    "UL": "",
     "accum": "да"
   },
   {
@@ -202,6 +228,7 @@
     "importance": "85%",
     "unit": "мг",
     "norma": "1000",
+    "UL": "2500",
     "accum": "да"
   },
   {
@@ -209,6 +236,7 @@
     "importance": "80%",
     "unit": "мг",
     "norma": "420",
+    "UL": "350",
     "accum": "да"
   },
   {
@@ -216,6 +244,7 @@
     "importance": "80%",
     "unit": "мг",
     "norma": "3500",
+    "UL": "",
     "accum": ""
   },
   {
@@ -223,6 +252,7 @@
     "importance": "30%",
     "unit": "мг",
     "norma": "2200",
+    "UL": "2300",
     "accum": ""
   },
   {
@@ -230,6 +260,7 @@
     "importance": "10%",
     "unit": "мг",
     "norma": "2300",
+    "UL": "3600",
     "accum": ""
   },
   {
@@ -237,6 +268,7 @@
     "importance": "20%",
     "unit": "мг",
     "norma": "700",
+    "UL": "4000",
     "accum": "да"
   },
   {
@@ -244,6 +276,7 @@
     "importance": "75%",
     "unit": "мг",
     "norma": "8",
+    "UL": "45",
     "accum": "да"
   },
   {
@@ -251,6 +284,7 @@
     "importance": "70%",
     "unit": "мг",
     "norma": "11",
+    "UL": "40",
     "accum": ""
   },
   {
@@ -258,6 +292,7 @@
     "importance": "75%",
     "unit": "мкг",
     "norma": "150",
+    "UL": "1100",
     "accum": "да"
   },
   {
@@ -265,6 +300,7 @@
     "importance": "65%",
     "unit": "мкг",
     "norma": "55",
+    "UL": "400",
     "accum": ""
   },
   {
@@ -272,6 +308,7 @@
     "importance": "30%",
     "unit": "мг",
     "norma": "0.9",
+    "UL": "10",
     "accum": "да"
   },
   {
@@ -279,6 +316,7 @@
     "importance": "20%",
     "unit": "мг",
     "norma": "2.3",
+    "UL": "11",
     "accum": ""
   },
   {
@@ -286,6 +324,7 @@
     "importance": "10%",
     "unit": "мкг",
     "norma": "45",
+    "UL": "2000",
     "accum": ""
   },
   {
@@ -293,6 +332,7 @@
     "importance": "30%",
     "unit": "мг",
     "norma": "1740",
+    "UL": "",
     "accum": ""
   },
   {
@@ -300,6 +340,7 @@
     "importance": "30%",
     "unit": "мг",
     "norma": "1340",
+    "UL": "",
     "accum": ""
   },
   {
@@ -307,6 +348,7 @@
     "importance": "45%",
     "unit": "мг",
     "norma": "2610",
+    "UL": "",
     "accum": ""
   },
   {
@@ -314,6 +356,7 @@
     "importance": "40%",
     "unit": "мг",
     "norma": "2010",
+    "UL": "",
     "accum": ""
   },
   {
@@ -321,6 +364,7 @@
     "importance": "25%",
     "unit": "мг",
     "norma": "1000",
+    "UL": "",
     "accum": ""
   },
   {
@@ -328,6 +372,7 @@
     "importance": "25%",
     "unit": "мг",
     "norma": "1000",
+    "UL": "",
     "accum": ""
   },
   {
@@ -335,6 +380,7 @@
     "importance": "35%",
     "unit": "мг",
     "norma": "268",
+    "UL": "",
     "accum": ""
   },
   {
@@ -342,6 +388,7 @@
     "importance": "20%",
     "unit": "мг",
     "norma": "1675",
+    "UL": "",
     "accum": ""
   },
   {
@@ -349,6 +396,7 @@
     "importance": "20%",
     "unit": "мг",
     "norma": "670",
+    "UL": "",
     "accum": ""
   },
   {
@@ -356,6 +404,7 @@
     "importance": "",
     "unit": "г",
     "norma": "50",
+    "UL": "",
     "accum": ""
   },
   {
@@ -363,6 +412,7 @@
     "importance": "",
     "unit": "мг",
     "norma": "300",
+    "UL": "",
     "accum": ""
   },
   {
@@ -370,6 +420,7 @@
     "importance": "",
     "unit": "%",
     "norma": "",
+    "UL": "",
     "accum": ""
   },
   {
@@ -377,6 +428,7 @@
     "importance": "",
     "unit": "%",
     "norma": "",
+    "UL": "",
     "accum": ""
   },
   {
@@ -384,6 +436,7 @@
     "importance": "",
     "unit": "%",
     "norma": "",
+    "UL": "",
     "accum": ""
   },
   {
@@ -391,6 +444,7 @@
     "importance": "",
     "unit": "%",
     "norma": "",
+    "UL": "",
     "accum": ""
   },
   {
@@ -398,6 +452,7 @@
     "importance": "",
     "unit": "%",
     "norma": "",
+    "UL": "",
     "accum": ""
   },
   {
@@ -405,6 +460,7 @@
     "importance": "",
     "unit": "%",
     "norma": "",
+    "UL": "",
     "accum": ""
   },
   {
@@ -412,6 +468,7 @@
     "importance": "",
     "unit": "%",
     "norma": "",
+    "UL": "",
     "accum": ""
   },
   {
@@ -419,6 +476,7 @@
     "importance": "",
     "unit": "%",
     "norma": "",
+    "UL": "",
     "accum": ""
   },
   {
@@ -426,6 +484,7 @@
     "importance": "",
     "unit": "%",
     "norma": "",
+    "UL": "",
     "accum": ""
   },
   {
@@ -433,13 +492,15 @@
     "importance": "",
     "unit": "%",
     "norma": "",
+    "UL": "",
     "accum": ""
   },
-    {
+  {
     "name": "Изжога",
     "importance": "",
     "unit": "%",
     "norma": "",
+    "UL": "",
     "accum": ""
   }
 ]
