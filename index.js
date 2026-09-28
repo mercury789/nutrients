@@ -69,6 +69,7 @@ let seafood = null;
 let seeds = null;
 let teas = null;
 let vegetables = null;
+let other = null;
 
 async function init() {
   const [
@@ -88,7 +89,8 @@ async function init() {
     seafoodRes,
     seedsRes,
     teasRes,
-    vegetablesRes
+    vegetablesRes,
+    otherRes
   ] = await Promise.all([
     fetch('./data/params.json'),
     fetch('./data/asian.json'),
@@ -106,7 +108,8 @@ async function init() {
     fetch('./data/seafood.json'),
     fetch('./data/seeds.json'),
     fetch('./data/teas.json'),
-    fetch('./data/vegetables.json')
+    fetch('./data/vegetables.json'),
+    fetch('./data/other.json')
   ]);
   
   params = await paramsRes.json();
@@ -126,6 +129,7 @@ async function init() {
   seeds = await seedsRes.json();
   teas = await teasRes.json();
   vegetables = await vegetablesRes.json();
+  other = await otherRes.json();
 }
 init().then(() => {
   
@@ -161,6 +165,10 @@ const dNames = dq('[data-names]')
     name: 'овощи',
     obj: vegetables
   },
+  {
+  name: 'другое',
+  obj: other
+},
     {
     name: 'фрукты',
     obj: fruits
