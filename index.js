@@ -152,6 +152,7 @@ const dNames = dq('[data-names]')
     name: 'рыба',
     obj: fish
   },
+ 
   {
     name: 'молочные продукты',
     obj: dairy
@@ -389,6 +390,7 @@ span.innerText = value.toFixed(1)
           </td>
           <td>${e.unit}</td>
           <td>${e.norma}</td>
+          <td>${e.UL}</td>
           <td>${e.accum}</td>
     `)
     
@@ -470,17 +472,19 @@ span.innerText = value.toFixed(1)
      
      <thead>
        <tr data-constr-category>
-         <th data-c_fix colspan="5">база</th>
+         <th data-c_fix colspan="6">база</th>
        </tr>
        <tr data-constr-names>
          <th data-c_fix-un>нутриент</th>
          <th data-c_fix-d>значимость 5-10л</th>
          <th data-c_fix-d>ед</th>
          <th data-c_fix-d>норм/сут</th>
+         <th data-c_fix-d>UL</th>
          <th data-c_fix-d>аккум</th>
        </tr>
        <tr data-constr-weight>
          <th data-c_fix-g-un>Грамовка</th>
+         <th data-c_fix-g></th>
          <th data-c_fix-g></th>
          <th data-c_fix-g></th>
          <th data-c_fix-g></th>
@@ -768,6 +772,7 @@ params.forEach((e) => {
           </td>
           <td>${e.unit}</td>
           <td>${e.norma}</td>
+          <td>${e.UL}</td>
           <td>${e.accum}</td>
     `)
     
@@ -831,17 +836,37 @@ fullResult.style = `--progress: ${max100(sumProcent)}%; ${colorProcent(sumProcen
             
             if(get('constrGram')) {
               
+              let defaultMode = true
+              
               JSON.parse(get('constrGram')).forEach((e) => {
                 
                 if (e.name === obj.product) {
                   g = e.value
+                  
+                  defaultMode = false
                 } 
                 
               })
                 
+                
+                if (defaultMode) {
+                  
+                  productLimit.forEach((e) => {
+  
+  if (e.name === obj.product) {
+    
+    g = e.value
+    
+  }
+  
+})
+                  
+                }
               
               
             } else {
+              
+              
               
               productLimit.forEach((e) => {
                 
@@ -1242,6 +1267,7 @@ const dcWeight = dq('[data-constr-weight]')
           </td>
           <td>${e.unit}</td>
           <td>${e.norma}</td>
+          <td>${e.UL}</td>
           <td>${e.accum}</td>
     `)
     
