@@ -213,6 +213,7 @@ const dNames = dq('[data-names]')
   
   
   let productLimit = []
+  let productUL = []
   
       
   categories.forEach((category) => {
@@ -256,6 +257,18 @@ categories.forEach((category) => {
     e.unit
     e.norma
     e.accum
+    e.UL
+    
+    if (e.UL !== '') {
+      let newObj = {
+        name: nameParam,
+        value: e.UL
+      }
+      
+      productUL.push(newObj)
+      
+      set('productUL', JSON.stringify(productUL))
+    }
     
     categories.forEach((category)=>{
       category.obj.forEach((obj)=>{
@@ -400,6 +413,9 @@ span.innerText = value.toFixed(1)
           <td>${e.norma}</td>
           <td>${e.UL}</td>
           <td>${e.accum}</td>
+          <td>${e.deficit}</td>
+          <td>${e.surplus}</td>
+          <td>${e.location}</td>
     `)
     
     dValue.appendChild(tr)
@@ -480,7 +496,7 @@ span.innerText = value.toFixed(1)
      
      <thead>
        <tr data-constr-category>
-         <th data-c_fix colspan="6">база</th>
+         <th data-c_fix colspan="9">база</th>
        </tr>
        <tr data-constr-names>
          <th data-c_fix-un>нутриент</th>
@@ -489,9 +505,15 @@ span.innerText = value.toFixed(1)
          <th data-c_fix-d>норм/сут</th>
          <th data-c_fix-d>UL</th>
          <th data-c_fix-d>аккум</th>
+    <th data-fix-d style='width: 120px;'>дефицит</th>
+    <th data-fix-d style='width: 120px;'>профицит</th>
+    <th data-fix-d style='width: 160px;'>локация</th>
        </tr>
        <tr data-constr-weight>
          <th data-c_fix-g-un>Грамовка</th>
+         <th data-c_fix-g></th>
+         <th data-c_fix-g></th>
+         <th data-c_fix-g></th>
          <th data-c_fix-g></th>
          <th data-c_fix-g></th>
          <th data-c_fix-g></th>
@@ -563,6 +585,7 @@ params.forEach((e) => {
   e.unit
   e.norma
   e.accum
+  e.UL
   
   let sum = 0
   let sumProcent = 0
@@ -758,10 +781,7 @@ params.forEach((e) => {
     
     dqa('[data-value] [data-title-l]').forEach((e) =>{
       
-      
-      
       log(e)
-      
       
       if (e.innerText === nameParam) {
         e.classList.add('_active')
@@ -770,6 +790,32 @@ params.forEach((e) => {
     })
     
   }
+  
+  productUL.forEach((e) => {
+    
+    if (e.name === nameParam) {
+      
+      if (sum >= e.value) {
+    
+    stortage = 'class="_red"'
+
+dqa('[data-value] [data-title-l]').forEach((e) => {
+      
+      log(e)
+      
+      if (e.innerText === nameParam) {
+        e.classList.add('_red')
+      }
+    
+  })
+  
+      }
+    }
+    
+  })
+    
+    
+  
   
   tr.insertAdjacentHTML('afterbegin', `
           <td data-c_fix-l data-title-l ${stortage}>${e.name}</td>
@@ -782,6 +828,9 @@ params.forEach((e) => {
           <td>${e.norma}</td>
           <td>${e.UL}</td>
           <td>${e.accum}</td>
+          <td>${e.deficit}</td>
+          <td>${e.surplus}</td>
+          <td>${e.location}</td>
     `)
     
   sum = +sum.toFixed(1)
@@ -1264,6 +1313,30 @@ const dcWeight = dq('[data-constr-weight]')
     
   }
   
+    
+  productUL.forEach((e) => {
+    
+    if (e.name === nameParam) {
+      
+      if (sum >= e.value) {
+    
+    stortage = 'class="_red"'
+
+dqa('[data-value] [data-title-l]').forEach((e) => {
+      
+      log(e)
+      
+      if (e.innerText === nameParam) {
+        e.classList.add('_red')
+      }
+    
+  })
+  
+      }
+    }
+    
+  })
+    
   
   
   tr.insertAdjacentHTML('afterbegin', `
@@ -1277,6 +1350,9 @@ const dcWeight = dq('[data-constr-weight]')
           <td>${e.norma}</td>
           <td>${e.UL}</td>
           <td>${e.accum}</td>
+          <td>${e.deficit}</td>
+          <td>${e.surplus}</td>
+          <td>${e.location}</td>
     `)
     
   sum = +sum.toFixed(1)
