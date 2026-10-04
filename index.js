@@ -214,6 +214,7 @@ const dNames = dq('[data-names]')
   
   let productLimit = []
   let productUL = []
+  let priceTag = 5
   
       
   categories.forEach((category) => {
@@ -282,9 +283,9 @@ categories.forEach((category) => {
             let value = infoObj.value
             
             if (nameParam === 'Стоимость') {
-              
+              /*
               td.classList.add('_price')
-              
+              */
             }
             
              
@@ -319,12 +320,7 @@ categories.forEach((category) => {
                   
                   if (infoObj.name === 'Лимит за сутки') {
                     
-                    let newObj = {
-                      name: obj.product,
-                      value: value
-                    }
                     
-                    productLimit.push(newObj)
                     
                     span.innerText = value
                     
@@ -332,24 +328,14 @@ categories.forEach((category) => {
                   
                   if (infoObj.name === 'Стоимость') {
                     
-                    
-                    productLimit.forEach((e) => {
-  
-  if (e.name === obj.product) {
-    
-    let coof
-    
-    coof = e.value / 100
-    
-    
-    value = value * coof
-    
-    
-  }
-  
-})
+                    let newObj = {
+  name: obj.product,
+  value: value
+}
 
-span.innerText = value.toFixed(1)
+productLimit.push(newObj)
+
+span.innerText = priceTag
 
                   }
                   
@@ -367,19 +353,12 @@ span.innerText = value.toFixed(1)
   
   if (e.name === obj.product) {
     
-    let coof
-    
-    coof = e.value / 100
-    
-    
-    value = value * coof
-    
+    value = value * priceTag / e.value
     
   }
   
 })
-                  
-                  
+                
                   
                   const procent = +((+value / +e.norma * 100).toFixed(0))
 
@@ -423,6 +402,68 @@ span.innerText = value.toFixed(1)
   })
   
   
+  // ========
+  
+  const mCategory = dq('[data-category]')
+const mNames = dq('[data-names]')
+const mValue = dq('[data-value]')
+const mWeight = dq('[data-weight]')
+  
+    // ==================== xxxxx
+    categories.forEach((category) => {
+  // отрисовка категорий
+  
+  let x = 0
+    
+    category.obj.forEach((obj) => {
+        
+            const thWeight = create('th')
+            
+            let g = 100
+            
+              
+              productLimit.forEach((e) => {
+                
+                if (e.name === obj.product) {
+                  
+                  g = (priceTag / e.value * 100).toFixed(0)
+                  
+                }
+                
+              })
+              
+            
+          thWeight.innerText = g
+          thWeight.setAttribute('data-name', obj.product)
+          thWeight.setAttribute('data-fix-g', obj.product)
+
+          mWeight.appendChild(thWeight)
+
+            x++
+          
+    })
+    
+    
+  
+  if (x) {
+    /*
+    const th = create('th')
+
+th.innerText = category.name
+th.setAttribute('colspan', x)
+th.setAttribute('data-fix', '')
+mCategory.appendChild(th)
+
+    */
+  }
+  
+  
+  
+})
+    // ==================== xxxxx
+    
+  
+  
   let constrProducts = []
   let productGram = []
   if (get('constrProducts')) {
@@ -433,7 +474,11 @@ span.innerText = value.toFixed(1)
   if (get('productGram')) {
   productGram = JSON.parse(get('productGram'))
 
-}
+  }
+  
+  
+  
+  
   
   document.addEventListener('click', (event) => {
       const targ = event.target
@@ -632,10 +677,6 @@ params.forEach((e) => {
             } else {
               
               
-              
-              
-              
-              
               let defaultValue = value
               
 
@@ -650,10 +691,10 @@ params.forEach((e) => {
     if (e.name === obj.product) {
       
       let coof
-      
-      coof = e.value / 100
-      
-      value = value * coof
+
+coof = e.value / 100
+
+value = value * coof
       
       defaultMode = false
       
@@ -667,12 +708,7 @@ params.forEach((e) => {
   
   if (e.name === obj.product) {
     
-    let coof
-    
-    coof = e.value / 100
-    
-    
-    value = value * coof
+    value = value * priceTag / e.value
     
     
   }
@@ -688,12 +724,7 @@ params.forEach((e) => {
   
   if (e.name === obj.product) {
     
-    let coof
-    
-    coof = e.value / 100
-    
-    
-    value = value * coof
+    value = value * priceTag / e.value
     
     
   }
@@ -707,7 +738,7 @@ params.forEach((e) => {
               
               value = +(+value).toFixed(1)
               
-              sum = sum + value
+              
               
               
               
@@ -723,6 +754,8 @@ params.forEach((e) => {
 
                     span.innerText = defaultValue
                     
+                    sum = sum + +defaultValue
+                    
                   }
                   
                   if (infoObj.name === 'Стоимость') {
@@ -730,6 +763,10 @@ params.forEach((e) => {
                     
 
           span.innerText = value.toFixed(1)
+          
+          td.setAttribute('data-constr-price', obj.product)
+          
+          sum = sum + value
 
                   }
                   
@@ -737,14 +774,15 @@ params.forEach((e) => {
                     
                     span.innerText = defaultValue
                     
+                    sum = sum + +defaultValue
+                    
                   }
                   
                   
                 } else {
                   
+                  sum = sum + value
                   
-                  
-                
                 
                 const procent = +((+value / +e.norma * 100).toFixed(0))
                 
@@ -877,7 +915,7 @@ fullResult.style = `--progress: ${max100(sumProcent)}%; ${colorProcent(sumProcen
   
 })
     
-  // ====================
+  // ==================== xxxxx
     categories.forEach((category) => {
   // отрисовка категорий
   
@@ -912,7 +950,7 @@ fullResult.style = `--progress: ${max100(sumProcent)}%; ${colorProcent(sumProcen
   
   if (e.name === obj.product) {
     
-    g = e.value
+    g = (priceTag / e.value * 100).toFixed(0)
     
   }
   
@@ -929,7 +967,7 @@ fullResult.style = `--progress: ${max100(sumProcent)}%; ${colorProcent(sumProcen
                 
                 if (e.name === obj.product) {
                   
-                  g = e.value
+                  g = (priceTag / e.value * 100).toFixed(0)
                   
                 }
                 
@@ -964,7 +1002,7 @@ dcCategory.appendChild(th)
   
   
 })
-    // ====================
+    // ==================== xxxxx
     
     
     const resultsTitle = create('th')
@@ -1191,13 +1229,7 @@ const dcWeight = dq('[data-constr-weight]')
   
   if (e.name === obj.product) {
     
-    let coof
-    
-    coof = e.value / 100
-    
-    
-    value = value * coof
-    
+    value = value * priceTag / e.value
     
   }
   
@@ -1212,12 +1244,7 @@ const dcWeight = dq('[data-constr-weight]')
   
   if (e.name === obj.product) {
     
-    let coof
-    
-    coof = e.value / 100
-    
-    
-    value = value * coof
+    value = value * priceTag / e.value
     
     
   }
@@ -1232,7 +1259,7 @@ const dcWeight = dq('[data-constr-weight]')
               
               
               
-              sum = sum + value
+              
               
               if (
                   infoObj.name === 'Стоимость' || 
@@ -1246,12 +1273,18 @@ const dcWeight = dq('[data-constr-weight]')
 
                     span.innerText = defaultValue
                     
+                    sum = sum + +defaultValue
+                    
                   }
                   
                   if (infoObj.name === 'Стоимость') {
                     
 
             span.innerText = value
+            
+            td.setAttribute('data-constr-price', obj.product)
+            
+            sum = sum + value
 
                   }
                   
@@ -1259,10 +1292,14 @@ const dcWeight = dq('[data-constr-weight]')
                     
                     span.innerText = defaultValue
                     
+                    sum = sum + +defaultValue
+                    
                   }
                   
                   
                 } else {
+                  
+                  sum = sum + value
                   
                 
                 const procent = +((+value / +e.norma * 100).toFixed(0))
@@ -1426,6 +1463,434 @@ fullResult.style = `--progress: ${max100(sumProcent)}%; ${colorProcent(sumProcen
   
 
       }
+
+
+if (targ.closest('[data-constr-price]')) {
+  const target = targ.closest('[data-constr-price]')
+  
+  const targetProduct = target.getAttribute('data-constr-price')
+      
+  
+      let reNum = +prompt('прайс', target.innerText)
+      
+      if (!Number.isFinite(reNum) || reNum <= 0) return 
+      
+      
+        
+      reNum = Number(reNum);
+        
+
+      target.innerText = reNum
+      
+      
+      productLimit.forEach((e) => {
+        
+        if (e.name === targetProduct) {
+          
+          reNum = reNum / e.value * 100
+          
+        }
+        
+      })
+      
+      reNum = +reNum.toFixed(0)
+      
+      dq(`[data-constr-name="${targetProduct}"]`).innerText = reNum
+      
+      
+      if (get('constrGram')) {
+        
+        let obj = {
+        name: targetProduct,
+        value: reNum
+      }
+      
+      let old = JSON.parse(get('constrGram'))
+      
+      
+      
+      let error = 0
+      
+      old.forEach((e) => {
+        
+        
+        
+        if (e.name === targetProduct) {
+          error = error + 1
+          
+          
+          e.value = reNum
+          
+          
+        }
+        
+      })
+      
+      
+      
+      
+      if (error === 0) {
+        
+        
+        
+        old.push(obj)
+        
+        
+
+      set('constrGram', JSON.stringify(old))
+        
+      } else {
+        
+        // этот обьект есть его нужно перезаписать !!! внизу все не верное
+        
+        
+
+set('constrGram', JSON.stringify(old))
+        
+      }
+      
+      
+      } else {
+        
+        let obj = [{
+        name: targetProduct,
+        value: reNum
+      }]
+      
+      set('constrGram', JSON.stringify(obj))
+      
+    
+        
+        
+      }
+      
+      
+      
+      
+      
+      dq('[data-constr-value]').innerHTML = ''
+      
+      // ======== тот же парамс
+      
+      const dcCategory = dq('[data-constr-category]')
+const dcNames = dq('[data-constr-names]')
+const dcValue = dq('[data-constr-value]')
+const dcWeight = dq('[data-constr-weight]')
+      
+      
+      params.forEach((e) => {
+  // отрисовка всех строк от params 
+  
+  const tr = create('tr')
+  
+  const nameParam = e.name
+  let importance = e.importance
+  importance = +importance.replace('%', '')
+  e.unit
+  e.norma
+  e.accum
+  
+  let sum = 0
+  let sumProcent = 0
+  
+  
+  categories.forEach((category) => {
+    
+    category.obj.forEach((obj) => {
+      
+      if (constrProducts.includes(obj.product)) {
+        
+        
+      obj.info.forEach((infoObj) => {
+        if (infoObj.name === nameParam) {
+          
+          const td = create('td')
+          const span = create('span')
+          td.appendChild(span)
+          
+          
+          let value = infoObj.value
+          
+          if (nameParam === 'Стоимость') {
+  
+  td.classList.add('_price')
+  
+}
+          
+          
+          if ((value === '') || (value === '0') || (value === '-')) {
+            
+            span.innerText = ''
+            
+          } else {
+            
+            if (value.includes('%')) {
+              
+              span.innerText = value
+              
+              value = +value.replace('%', '')
+              
+              td.style = `--progress: ${value}%; ${colorProcent(value)}`
+              
+              
+            } else {
+              
+            let defaultValue = value
+              
+
+        if (get('constrGram')) {
+  
+  let constrGram = JSON.parse(get('constrGram'))
+  
+  let defaultMode = true
+  
+  constrGram.forEach((e) => {
+    
+    if (e.name === obj.product) {
+      
+      let coof
+      
+      coof = e.value / 100
+      
+      value = value * coof
+      
+      defaultMode = false
+      
+    }
+    
+  })
+  
+  if (defaultMode) {
+    
+    productLimit.forEach((e) => {
+  
+  if (e.name === obj.product) {
+    
+    value = value * priceTag / e.value
+    
+  }
+  
+})
+    
+  }
+  
+} else {
+  
+  
+  productLimit.forEach((e) => {
+  
+  if (e.name === obj.product) {
+    
+    value = value * priceTag / e.value
+    
+    
+  }
+  
+})
+
+  
+}
+
+              
+              value = +(+value).toFixed(1)
+              
+              
+              
+              
+              
+              if (
+                  infoObj.name === 'Стоимость' || 
+                infoObj.name === 'Лимит на порцию'
+                  || 
+                infoObj.name === 'Лимит за сутки'
+                  
+                ) {
+                  
+                  if (infoObj.name === 'Лимит за сутки') {
+
+                    span.innerText = defaultValue
+                    
+                    sum = sum + +defaultValue
+                    
+                  }
+                  
+                  if (infoObj.name === 'Стоимость') {
+                    
+
+            span.innerText = value
+            
+            td.setAttribute('data-constr-price', obj.product)
+            
+            sum = sum + value
+
+                  }
+                  
+                  if (infoObj.name === 'Лимит на порцию') {
+                    
+                    span.innerText = defaultValue
+                    
+                    sum = sum + +defaultValue
+                    
+                  }
+                  
+                  
+                } else {
+                  
+                  sum = sum + value
+                  
+                
+                const procent = +((+value / +e.norma * 100).toFixed(0))
+                
+                
+                sumProcent = sumProcent + procent
+                
+                span.innerText = `${(value).toFixed(1)} ${procent}%`
+                
+                td.style = `--progress: ${max100(procent)}%; ${colorProcent(procent)}`
+              }
+              
+              
+            }
+            
+          }
+          
+          td.classList.add('progress')
+          
+          tr.appendChild(td)
+          
+          
+        }
+      })
+      
+      }
+    })
+  })
+  
+  
+  let stortage = ''
+  
+  if (sumProcent > 100) {
+    stortage = 'class="_active"'
+    
+    dqa('[data-value] [data-title-l]').forEach((e) =>{
+      
+      
+      
+      log(e)
+      
+      
+      if (e.innerText === nameParam) {
+        e.classList.add('_active')
+      }
+      
+    })
+    
+  }
+  
+    
+  productUL.forEach((e) => {
+    
+    if (e.name === nameParam) {
+      
+      if (sum >= e.value) {
+    
+    stortage = 'class="_red"'
+
+dqa('[data-value] [data-title-l]').forEach((e) => {
+      
+      log(e)
+      
+      if (e.innerText === nameParam) {
+        e.classList.add('_red')
+      }
+    
+  })
+  
+      }
+    }
+    
+  })
+    
+  
+  
+  tr.insertAdjacentHTML('afterbegin', `
+          <td data-fix-l data-title-l ${stortage}>${e.name}</td>
+          <td class='progress' style='--progress: ${importance}%; ${colorProcent(importance)}'>
+          
+          <span>${importance}%</span>
+          
+          </td>
+          <td>${e.unit}</td>
+          <td>${e.norma}</td>
+          <td>${e.UL}</td>
+          <td>${e.accum}</td>
+          <td>${e.deficit}</td>
+          <td>${e.surplus}</td>
+          <td>${e.location}</td>
+    `)
+    
+  sum = +sum.toFixed(1)
+  sumProcent = +sumProcent.toFixed(0)
+  
+  
+  const exception = ['Лимит за сутки','Стоимость','Лимит на порцию','Уровень вздутия','Токсичн запах вздутия','Вероятн поноса','Инсулин качели','Вредность','Полезность','Тяжесть ЖКТ (на 100г)','Сонность после приема','Риск при ежедневном употреблении (5+ лет)','Нутриентная плотность (на 100 ккал)','Изжога']
+
+const spanFR = create('span')
+const fullResult = create('td')
+
+
+
+if (exception.includes(nameParam)) {
+  
+  if (sum === 0) {
+  sum = ''
+}
+
+  
+  spanFR.innerText = `${sum}`
+  
+} else {
+
+spanFR.innerText = `${sum} ${sumProcent}%`
+fullResult.classList.add('progress')
+fullResult.style = `--progress: ${max100(sumProcent)}%; ${colorProcent(sumProcent)}`
+  
+}
+
+  
+  if (nameParam === 'Стоимость') {
+  
+  fullResult.classList.add('_price')
+  
+}
+  
+  
+  fullResult.appendChild(spanFR)
+  tr.appendChild(fullResult)
+  dcValue.appendChild(tr)
+  
+})
+    
+      let newSum = 0
+      dqa('[data-constr-name]').forEach((name) => {
+        
+        newSum = +name.innerText + newSum
+        
+      })
+      
+      dq('[data-sum-weight]').innerText = newSum
+      
+      
+      set('innerHTML', dq('[data-load]').innerHTML)
+      
+      
+      
+      
+      
+  
+      }
+      
+
 
     })
 
